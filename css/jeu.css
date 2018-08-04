@@ -1,0 +1,219 @@
+
+#map {
+    box-sizing: border-box;
+    width: 750px;
+    height: 750px;
+    background-color: darkolivegreen;
+    border: 1px black solid;
+    position: relative;
+    float: left;
+}
+
+#gameplay {
+    width: 150px;
+    height: 750px;
+    float: left;
+    color: white;
+}
+
+button{
+    margin: 10px;
+    margin-left: 40px;
+}
+
+h4,
+h5 {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    margin-left: 5px;
+}
+
+ul {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    padding-left: 90px;
+
+}
+
+.boxPerso {
+    box-sizing: border-box;
+    height: 375px;
+    border: 2px grey solid;
+    background-color: rgba(41, 39, 39, 0.98);
+
+}
+
+.boxPresentation {
+
+    text-align: center;
+    height: 90px;
+
+}
+
+
+
+#imgArme1 {
+    background-image: url("../image/armes/simpleEpee.png");
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    float: right;
+
+}
+
+#imgArme2 {
+    background-image: url("../image/armes/simpleEpee.png");
+    background-size: cover;
+    width: 60px;
+    height: 60px;
+    float: right;
+}
+
+#nomArme1,
+#nomArme2 {
+    font-size: 0.8em;
+    font-style: italic;
+    display: inline-block;
+    margin-left: 15px;
+
+}
+
+
+.boxBarreDeVie {
+    height: 50px;
+    position: relative
+}
+
+.barreRougeClaire {
+    /*display: inline-block;*/
+    position: absolute;
+    top: 30px;
+    left: 10px;
+    width: 120px;
+    height: 20px;
+    background-color: lightcoral;
+    border: 1px black solid;
+    border-radius: 5px;
+
+
+}
+
+.barreRouge {
+    background-color: red;
+    width: 100%;
+    position: relative;
+    top:0px;
+    left:0px;
+    height: 20px;
+    border-radius: 5px;
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.rocher {
+    width: 75px;
+    height: 75px;
+    background-image: url('../image/Rocher.png');
+    background-size: cover;
+    position: absolute;
+
+}
+
+.arme,
+.personnage {
+    width: 75px;
+    height: 75px;
+    background-size: cover;
+    position: absolute;
+
+}
+
+
+
+
+
+
+#espaceInfo {
+    position: absolute;
+    z-index: 1;
+    height: 300px;
+    width: 0px;/*0px-645px*/
+    background-color: rgba(245, 245, 245, 0.63);
+    border: #110b58 2px;
+    border-style: solid;
+    overflow-x: hidden;
+    white-space: nowrap;
+    
+    
+    top: 200px;
+    left: 745px;/*745px-100px*/
+    transition: width 1s,left 1s;
+    
+    
+}
+
+#espaceInfo.visible{
+    left: 100px;
+    width: 645px;
+    
+}
+
+
+#chgtArme {
+    color: black;
+    font-size: 1.5em;
+    
+}
+
+
+
+
+#imgInfoArme {
+    float: left;
+    margin: 15px;
+    
+}
+
+
+
+#nomInfoArme {
+    font-weight: bold;
+}
+
+#forceInfoArme {
+    font-weight: bold;
+}
+
+#combat{
+    color: black;
+    font-size: 1.5em;
+    display: none;
+    
+}
+
+#combat.visible{
+    display: block;
+}
+
+#defense,#victoire{
+    display: none;
+}
+
+
+
+#boxpers1 {
+    border:6px solid red
+}

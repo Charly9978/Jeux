@@ -1,0 +1,123 @@
+<!doctype html>
+
+<html>
+
+
+<head>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../css/jeu.css">
+
+    <title>Jeu</title>
+
+</head>
+
+
+<body>
+    <div id="plateau">
+
+        <div id="map">
+            <div id="espaceInfo">
+                <div id="chgtArme">
+                    <img src="" alt="" id="imgInfoArme">
+                    <p>Voulez vous récupérer <span id="nomInfoArme"></span>?</p>
+                    <p>Sa force est de :<span id="forceInfoArme"></span></p>
+                    <button id="ouiBtArme">OUI</button><button id="nonBtArme">NON</button>
+                    
+                </div>
+                <div id="combat">
+                    <img src="" alt="" id="imgPersoCombat">
+                    <div id="texteCombat">
+                       <div id="attaque">
+                           <span class="attaquant"></span> donne un coup d'une puissance de <span class="puissance"></span>
+                       </div>
+                       <div id="defense">
+                           <p><span class="defenseur"></span>, veux-tu te défendre ou contre-attaquer?</p>
+                           <button id="defendreBt">DEFENSE</button><button id="ctrAttaqueBt">CONTRE-ATTAQUE</button>
+                       </div>
+                       <div id="victoire">
+                           <h2><span class='attaquant'></span>, YOU WIN !!!!!</h2>
+                           
+                       </div>
+                        
+                    </div>
+                    
+                    
+                    
+                </div>
+            </div>
+        </div>
+        <div id="gameplay">
+
+            <div id="boxpers1" class="boxPerso">
+                <div id="boxPresention1" class="boxPresentation">
+                    <img id="imgGoeffroy" src="../image/personnage/pers1/face.png">
+                    <h4>Goeffroy</h4>
+                </div>
+
+
+                <div id="boxArme1" class="boxArme">
+                    <div id="imgArme1"></div>
+                    <h5>Arme: </h5><span id="nomArme1">Simple épée</span>
+                    <h5>Dégats:</h5>
+                    <ul id="degatArme1">10</ul>
+                </div>
+
+                <div id="boxBarreDeVie1" class="boxBarreDeVie">
+                    <h5>Points de vie :</h5>
+                    <div class="barreRougeClaire">
+                    <div id="barreRougepers1" class="barreRouge"></div></div>
+                </div>
+                <div id="boxNbMvt1" class="boxNbMvt">
+                    <h5>Mouvement :</h5>
+                    <ul><span id="nbMvtpers1">0</span>/3</ul>
+                </div>
+            </div>
+
+
+
+
+
+            <div id="boxpers2" class="boxPerso">
+                <div id="boxPresention2" class="boxPresentation">
+                    <img id="imgJacquouille" src="../image/personnage/pers2/face.png">
+                    <h4>Jacquouille</h4>
+                </div>
+
+
+                <div id="boxArme2" class="boxArme">
+                    <div id="imgArme2"></div>
+                    <h5>Arme: </h5><span id="nomArme2">Simple épée</span>
+                    <h5>Dégats:</h5>
+                    <ul id="degatArme2">10</ul>
+                </div>
+
+                <div id="boxBarreDeVie2" class="boxBarreDeVie">
+                    <h5>Points de vie :</h5>
+                    <div class="barreRougeClaire">
+                    <div id="barreRougepers2" class="barreRouge"></div></div>
+                </div>
+                <div id="boxNbMvt2" class="boxNbMvt">
+                    <h5>Mouvement :</h5>
+                    <ul><span id="nbMvtpers2">0</span>/3</ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <script src="../js/jquery.js"></script>
+    <script src="../js/map.js"></script>
+    <script src="../js/decompte.js"></script>
+    
+    <script src="../js/combat.js"></script>
+    <script src="../js/armesbis.js"></script>
+    
+    <script src="../js/jeubis.js"></script>
+
+</body>
+
+
+</html>
