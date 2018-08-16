@@ -1,3 +1,10 @@
+/*
+*
+*Creation de la map (array et dom)
+*
+*/
+
+
 class Emplacement{
     constructor(){
         this.rocher = false;
@@ -29,6 +36,14 @@ function creationMap() {
 };
 
 var map = creationMap();
+
+
+/*
+*
+*Mise en place des rochers sur la map (array et dom)
+*
+*/
+
 
 class Rocher{
     constructor(positionX, positionY){
@@ -73,6 +88,14 @@ function creationRocher() {
 };
 
 creationRocher();
+
+
+
+/*
+*
+*Mise en place des armes et des personnages (array et dom)
+*
+*/
 
 class Object{
     constructor(nom,url){
