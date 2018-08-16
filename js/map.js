@@ -81,8 +81,8 @@ class Object{
     }
     positionnementInitial(){
         do {
-            let x = Math.floor((Math.random() * 10));
-            let y = Math.floor((Math.random() * 10));
+            var x = Math.floor((Math.random() * 10));
+            var y = Math.floor((Math.random() * 10));
     
         } while (map[x][y].occupation === true || map[x][y].personnage !== "");
     
@@ -101,7 +101,7 @@ class Object{
             "id", this.nom);
         this.div.style.left = x * 75 + "px";
         this.div.style.top = y * 75 + "px";
-        this.div.style.backgroundImage = 'url(' + object.url + ')';
+        this.div.style.backgroundImage = 'url(' + this.url + ')';
         document.getElementById("map").appendChild(this.div);
     }
 }
