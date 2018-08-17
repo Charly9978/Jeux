@@ -38,66 +38,14 @@ function creationMap() {
 var map = creationMap();
 
 
-/*
-*
-*Mise en place des rochers sur la map (array et dom)
-*
-*/
-
-
-class Rocher{
-    constructor(positionX, positionY){
-        this.positionX = positionX;
-        this.positionY = positionY;
-        map[positionX][positionY].rocher = true;
-        map[positionX][positionY].occupation = true;
-        if (positionX + 1 < 10) {
-            map[positionX + 1][positionY].mvtGaucheAutorise = false;
-        }
-        if (positionX - 1 >= 0) {
-            map[positionX - 1][positionY].mvtDroitAutorise = false;
-        }
-        if (positionY + 1 < 10) {
-            map[positionX][positionY + 1].mvtHautAutorise = false;
-        }
-        if (positionY - 1 >= 0) {
-            map[positionX][positionY - 1].mvtBasAutorise = false;
-        }
-        this.div = document.createElement("div");
-
-        this.div.setAttribute("class", "rocher");
-        this.div.style.left = positionX * 75 + "px";
-        this.div.style.top = positionY * 75 + "px";
-        document.getElementById("map").appendChild(this.div);
-    }
-}
-
-
-function creationRocher() {
-    let rochers = [];
-    let nbRocher = ""
-    while (nbRocher < 15 || nbRocher === "") {
-        nbRocher = Math.floor((Math.random() * 25));
-    }
-
-    for (let i = 0; i < nbRocher; i++) {
-        positionX = Math.floor((Math.random() * 10));
-        positionY = Math.floor((Math.random() * 10));
-        rochers[i] = new Rocher(positionX, positionY);
-    }
-};
-
-creationRocher();
-
-
 
 /*
 *
-*Mise en place des armes et des personnages (array et dom)
+*Mise en place du constructeur element pour les rochers, les armes et les personnages (array et dom)
 *
 */
 
-class Object{
+class Element{
     constructor(nom,url){
         this.nom = nom;
         this.url = url;
@@ -111,6 +59,21 @@ class Object{
     
         this.positionX = x;
         this.positionY = y;
+        if(this.type === "rocher" || this.type === "personnage"){
+
+        if (positionX + 1 < 10) {
+            map[positionX + 1][positionY].mvtGaucheAutorise = false;
+        }
+        if (positionX - 1 >= 0) {
+            map[positionX - 1][positionY].mvtDroitAutorise = false;
+        }
+        if (positionY + 1 < 10) {
+            map[positionX][positionY + 1].mvtHautAutorise = false;
+        }
+        if (positionY - 1 >= 0) {
+            map[positionX][positionY - 1].mvtBasAutorise = false;
+        }
+    }
     
         map[x][y].occupation = true;
         
@@ -129,8 +92,17 @@ class Object{
     }
 }
 
+class Rocher extends Element{
+    constructor(nom){
+        super (nom);
+        this.url = "../image/Rocher.png";
+        this.type = 'rocher';
+    }
 
-class Armes extends Object{
+}
+
+
+class Armes extends Element{
     constructor(nom, degat, url, texte){
         super (nom,url);
         this.texte = texte;
@@ -139,7 +111,7 @@ class Armes extends Object{
     }
 }
 
-class Personnage extends Object{
+class Personnage extends Element{
     constructor(nom, url, dossierImg, arme){
         super (nom,url);
         this.ptVie = 100;
@@ -148,6 +120,40 @@ class Personnage extends Object{
         this.type = "personnage";
     }
 }
+
+
+/*
+*
+*Mise en place des rochers sur la map (array et dom)
+*
+*/
+
+
+function creationRocher() {
+    let rochers = [];
+    let nbRocher = ""
+    while (nbRocher < 15 || nbRocher === "") {
+        nbRocher = Math.floor((Math.random() * 25));
+    }
+
+    for (let i = 0; i < nbRocher; i++) {
+        positionX = Math.floor((Math.random() * 10));
+        positionY = Math.floor((Math.random() * 10));
+        rochers[i] = new Rocher("Rocher"+i);
+        rochers[i].positionnementInitial();
+    }
+};
+
+creationRocher();
+
+
+/*
+*
+*Mise en place des armes et des personnages sur la map (array et dom)
+*
+*/
+
+
 
 
 var epee = new Armes("epee", 15, "../image/armes/epee.png", "l'épée");
