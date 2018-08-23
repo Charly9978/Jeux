@@ -24,37 +24,51 @@ var appuiFleches = function (e) {
     
     document.getElementById("nbMvt" + persoActif.dossierImg).innerHTML = nbCoup;
 
-    animationPerso(direction);
+    animationPerso(direction)
+    .then(testPresenceArme())
+    .then(testPresenceAdversaire());
 
 }
 
 
 function animationPerso(direction) {
-
+ return new Promise((resolve)=>{
 
     var divPerso = document.getElementById(persoActif.nom);
     var posX = persoActif.positionX * 75;
     var posY = persoActif.positionY * 75;
     var nbAnim = 1;
-    var id = setInterval(frame, 100);
-
-
-    function frame() {
+    switch(direction){
+        case "UP":
+        var pos = posY;
+        var a =  -1;
+        var dir = "TOP";
+        break
+        case "DOWN":
+        var pos = posY;
+        var a =  1;
+        var dir = "TOP";
+        break;
+        case "RIGHT":
+        var pos = posX;
+        var a =  1;
+        var dir = "LEFT";
+        break;
+        case"LEFT":
+        var pos = posY;
+        var a =  -1;
+        var dir = "LEFT";
+        break;
+    }
+    let id = setInterval(()=>{
         if (nbAnim == 10) {
             clearInterval(id);
        
-
             divPerso.style.backgroundImage = 'url("../image/personnage/' + persoActif.dossierImg + '/' + direction + '1.png")';
 
-            miseJourPositionPerso(direction);
+            persoActif.move(direction);
 
-            decompte();
-            
-            testPresenceArme();
-           
-
-
-
+            resolve();
 
         } else {
 
@@ -65,29 +79,18 @@ function animationPerso(direction) {
             } else {
                 var nbPx = 7;
             }
-            if (direction === "LEFT") {
-                posX = posX - nbPx
-                divPerso.style.left = posX + 'px';
-            }
-
-            if (direction === "RIGHT") {
-                posX = posX + nbPx
-                divPerso.style.left = posX + 'px';
-            }
-
-            if (direction === "DOWN") {
-                posY = posY + nbPx
-                divPerso.style.top = posY + 'px';
-            }
-
-            if (direction === "UP") {
-                posY = posY - nbPx
-                divPerso.style.top = posY + 'px';
-            }
+            pos += (nbPx*a);
+            divPerso.style[dir] = pos + 'px';
 
             nbAnim++;
         }
-    }
+
+    }, 100);
+
+})
+
+
+
 }
 
 

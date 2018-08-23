@@ -59,7 +59,7 @@ class Element{
     
         this.positionX = x;
         this.positionY = y;
-        if(this.type === "rocher" || this.type === "personnage"){
+        if(this.type === "rocher"){
 
         if (positionX + 1 < 10) {
             map[positionX + 1][positionY].mvtGaucheAutorise = false;
@@ -119,6 +119,54 @@ class Personnage extends Element{
         this.dossierImg = dossierImg;
         this.type = "personnage";
     }
+
+    move(dir){
+        map[this.positionX][this.positionY].personnage = "";
+        switch(dir){
+            case "UP":
+            this.positionY -=1;
+            break;
+
+            case "DOWN":
+            this.positionY +=1;
+            break;
+
+            case "LEFT":
+            this.positionX -=1;
+            break;
+
+            case "RIGHT":
+            this.positionX +=1;
+            break;
+        }
+        map[this.positionX][this.positionY].personnage = this;
+        console.log(map);
+    }
+
+changeArme(){
+    let oldArme = this.arme;
+    let newArme = map[this.positionX][this.positionY].arme;
+
+
+    this.arme = newArme;
+
+    //modification de la box de présentation concernant le personnage
+    document.getElementById('imgArme' + this.nom).style.backgroundImage = 'url("' + this.arme.url + '")';
+
+    document.getElementById('nomArme' + this.nom).textContent = this.arme.texte;
+        
+    document.getElementById('degatArme' + this.nom).textContent = String(this.arme.degat);
+
+
+    map[this.positionX][this.positionY].arme = oldArme;
+    
+    //modifie l'id et l'image de l'arme qui est redéposé sur la map.
+    document.getElementById(this.arme.nom).style.backgroundImage = 'url("' +oldArme.url + '")';
+
+    document.getElementById(this.arme.nom).setAttribute('id', oldArme.nom);
+
+
+}
 }
 
 
@@ -180,27 +228,3 @@ pers2.positionnementInitial();
 
 console.log(map);
 
-
-
-function miseJourPositionPerso(mvt) {
-    var x = persoActif.positionX;
-    var y = persoActif.positionY;
-    map[x][y].personnage = "";
-    
-    if (mvt === "LEFT"){x -= 1}
-    
-    if (mvt === "UP"){y -= 1}
-    
-    if (mvt === "RIGHT"){x += 1}
-    
-    if(mvt === "DOWN"){y += 1}
-    
-    persoActif.positionX = x;
-    persoActif.positionY = y;
-    
-    map[x][y].personnage = persoActif;
-    
-    console.log(map);
-    
-    
-};
